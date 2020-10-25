@@ -1,6 +1,6 @@
 (ns allergenie.pollen
   (:require [clojure.data.json :as json]
-           [clj-http.client :as client]))
+            [clj-http.client :as client]))
 
 (defn pollen [req]
   (let [zip (:zip (:params req))

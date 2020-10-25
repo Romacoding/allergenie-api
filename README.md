@@ -30,7 +30,9 @@ Run that uberjar:
 ## Routes
 
 /pollen - get pollen info for the provided zip code.
+
 /air - get air info for the provided zip code.
+
 /weather - get weather info for the provided zip code.
 
 Example: Request to /pollen?zip=11223 will receive the pollen info for zip 11223 in a JSON format.
