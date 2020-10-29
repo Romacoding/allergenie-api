@@ -24,11 +24,9 @@
                            :Referer (str "https://www.pollen.com/api/forecast/current/pollen/" zip)}})
         body (json/read-str (resp :body)
                             :key-fn keyword)
-        index (get-in body [:Location :periods 1 :Index])
-        level (pollen-level index)
-        color (pollen-color index)]
+        index (get-in body [:Location :periods 1 :Index])]
 
     {:status  200
      :headers {"Content-Type" "application/json"}
      :body    (json/write-str
-               (assoc {} :location (get-in body [:Location :DisplayLocation]) :triggers (get-in body [:Location :periods 1 :Triggers]) :index index :level level :color color))}))
+               (assoc {} :location (get-in body [:Location :DisplayLocation]) :triggers (get-in body [:Location :periods 1 :Triggers]) :index index :level (pollen-level index) :color (pollen-color index)))}))
