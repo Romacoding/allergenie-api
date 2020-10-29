@@ -3,13 +3,17 @@
   (:require [org.httpkit.server :as server]
             [compojure.core :refer [defroutes GET]]
             [compojure.route :refer [not-found]]
-            [ring.util.response :refer [response]]
+            ;[ring.util.response :refer [response]]
             [ring.handler.dump :refer [handle-dump]]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
-            [allergenie.pollen :refer [pollen]]))
+            [allergenie.pollen :as p]
+            [allergenie.air :as a]
+            [allergenie.weather :as w]))
 
 (defn main-page [_] 
-  (response "Service is running"))
+      {:status  200
+       :headers {"Content-Type" "text/html"}
+       :body    (str "API server is running")})
 
 (defn request-info [req]
   (handle-dump req))
@@ -17,9 +21,9 @@
 (defroutes app
   (GET "/" [] main-page)
   (GET "/request" [] request-info)
-  (GET "/pollen" [] pollen)
-  #_(GET "/air" [] air)
-  #_(GET "/weather" [] weather)
+  (GET "/pollen" [] p/pollen)
+  (GET "/air" [] a/air)
+  (GET "/weather" [] w/weather)
   (not-found "<h1>Sorry, page not found!</h1>"))
 
 (def api-server (atom nil))

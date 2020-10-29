@@ -12,15 +12,15 @@ Make sure you have Clojure installed on your system.
 
 Run the project directly:
 
-    $ clojure -M -m allergenie.api-server
+    $ clj -M -m allergenie.api-server
 
 Run the project's tests (they'll fail until you edit them):
 
-    $ clojure -M:test:runner
+    $ clj -M:test:runner
 
 Build an uberjar:
 
-    $ clojure -M:uberjar
+    $ clj -M:uberjar
 
 Run that uberjar:
 
